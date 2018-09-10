@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :products
   resources :sellers
-  resources :users, only: [:show, :edit, :update, :create, :destroy, :new]
+  resources :users, only: [:show, :edit, :update, :create, :destroy]
 
-  get "/signup", to: "user#new"
+  get "/signup", to: "users#new"
   get "/login", to: 'sessions#new'
   post "/sessions", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

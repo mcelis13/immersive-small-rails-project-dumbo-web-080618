@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :credit_card
       t.string :password_digest
       t.string :user_name
-
+      t.string :seller
       t.timestamps
     end
   end

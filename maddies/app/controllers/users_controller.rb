@@ -10,11 +10,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    if @user.valid?
-      redirect_to @user
-    else
-      render :new
+    if user_params['seller'] == '1' # I am a seller
+      @user = User.create(user_params)
+      if @user.valid?
+        redirect_to @user
+      else
+        render :new
+      end
+    else  # I am just a buyer
+      @user = User.create(user_params)
+      if @user.valid?
+        redirect_to @user
+      else
+        render :new
+      end
     end
   end
 
