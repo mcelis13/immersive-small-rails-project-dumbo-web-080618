@@ -2,4 +2,6 @@
 <%= @user.user_name %>
 <%= @user.email %>
 <%= @cart %>
+<%= link_to "check out", users_cart_path, method: :post %>
+
 <!-- Need to be able to see the cart for the user -->

@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_182605) do
     t.string "user_name"
     t.string "address"
     t.string "email"
-    t.string "credit_card"
+    t.string "bank_account"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
