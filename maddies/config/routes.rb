@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :sellers
   resources :users, only: [:show, :edit, :update, :create, :destroy]
 
+  root 'application#welcome'
   get "/signup", to: "users#new"
   get "/login", to: 'sessions#new'
   post "/sessions", to: "sessions#create"
