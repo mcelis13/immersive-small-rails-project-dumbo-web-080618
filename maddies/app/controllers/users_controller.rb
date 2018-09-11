@@ -10,20 +10,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    if user_params['seller'] == '1' # I am a seller
-      @user = User.create(user_params)
-      if @user.valid?
-        redirect_to @user
-      else
-        render :new
-      end
-    else  # I am just a buyer
-      @user = User.create(user_params)
-      if @user.valid?
-        redirect_to @user
-      else
-        render :new
-      end
+    @user = User.create(user_params)
+    if @user.valid?
+      redirect_to login_path
+    else
+      render :new
     end
   end
 
@@ -51,7 +42,7 @@ class UsersController < ApplicationController
 
   def user_params
     #add the image later
-    params.require(:user).permit(:user_name, :password, :password_confirmation, :email, :name, :address, :credit_card)
+    params.require(:user).permit(:first_name, :last_name,:user_name, :password, :password_confirmation, :email, :address, :credit_card)
   end
 
 end
