@@ -1,4 +1,11 @@
 class ProductsController < ApplicationController
+  helper_method :add_cart
+
+  def add_cart
+    @product = Product.find(params[:id])
+    current_cart << @product
+    redirect_to user_path(session[:current_user_id])
+  end
 
   def index
     @products = Product.all

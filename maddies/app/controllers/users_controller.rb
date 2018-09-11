@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  helper_method :cart
 # the user clears cart when they buy or manually delete the cart
+
   def show
     @user = User.find(params[:id])
+    @cart = current_cart
   end
 
   def new
