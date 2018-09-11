@@ -1,0 +1,13 @@
+<h1><%= @user_product.product.name %></h1>
+
+<h3>Description: <%= @user_product.product.description %></h3>
+
+<h3>Price: $ <%= @user_product.price %></h3>
+
+<h4>Quantity Available: <%= @user_product.quantity %></h4><br><br>
+
+<%= form_tag add_path(@user_product.id), method: :post do %>
+  <label>Quantity to buy:</label><br>
+  <%= number_field_tag 'quantity', nil, in: 1..@user_product.quantity%><br><br>
+  <input type="submit" value="Add to cart">
+<% end %>
