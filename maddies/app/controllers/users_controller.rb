@@ -6,6 +6,12 @@ class UsersController < ApplicationController
     @cart = current_cart
   end
 
+  def checkout
+    @cart = current_cart
+    #charge them
+    @cart.destroy
+  end
+
   def new
     @user = User.new
   end
@@ -43,7 +49,7 @@ class UsersController < ApplicationController
 
   def user_params
     #add the image later
-    params.require(:user).permit(:first_name, :last_name,:user_name, :password, :password_confirmation, :email, :address, :credit_card)
+    params.require(:user).permit(:first_name, :last_name,:user_name, :password, :password_confirmation, :email, :address, :bank_account)
   end
 
 end
