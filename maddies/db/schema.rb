@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 2018_09_10_192054) do
     t.string "address"
     t.string "email"
     t.integer "credit_card"
-    t.string "img_url"
     t.string "password_digest"
     t.string "user_name"
+    t.string "seller"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
