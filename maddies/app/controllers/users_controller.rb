@@ -1,5 +1,17 @@
 class UsersController < ApplicationController
 # the user clears cart when they buy or manually delete the cart
+helper_method :add_cart
+
+
+  def add_cart
+    sum = 0;
+  #want to byebug to actually see what is happening here
+    current_cart.each do |productObj|
+        sum += productObj['price'] * productObj['quantity'].to_i
+    end
+
+    sum
+  end
 
   def show
     @user = User.find(params[:id])
@@ -7,9 +19,15 @@ class UsersController < ApplicationController
   end
 
   def checkout
-    @cart = current_cart
-    #charge them
-    @cart.destroy
+    current_user.bank_account = current_user.bank_account.to_i
+    current_user.bank_account = add_cart
+    #access seller and add monies to bank_account
+    current_cart.clear
+    redirect_to users_confirmation_path
+  end
+
+  def confirmation
+    render :confirmation
   end
 
   def new

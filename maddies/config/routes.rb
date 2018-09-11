@@ -4,11 +4,15 @@ Rails.application.routes.draw do
   get "/login", to: 'sessions#new'
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  get 'users/cart', to: 'users#cart'
-  post 'products/:id/add_cart', to: "products#add_cart", as: "add"
-
-
   resources :products
+
+  # get 'users/cart', to: 'users#cart'
+  post 'user_products/:id/add_cart', to: "user_products#add_cart", as: "add"
+  post '/users/cart', to: 'users#checkout'
+  get '/users/confirmation', to: 'users#confirmation'
+
+  resources :user_products
+
   resources :users, only: [:show, :edit, :update, :create, :destroy]
 
   root 'application#welcome'

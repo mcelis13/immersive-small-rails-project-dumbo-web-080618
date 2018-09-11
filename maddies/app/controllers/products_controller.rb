@@ -1,12 +1,6 @@
 class ProductsController < ApplicationController
   helper_method :add_cart
 
-  def add_cart
-    @product = Product.find(params[:id])
-    current_cart << @product
-    redirect_to user_path(session[:current_user_id])
-  end
-
   def index
     @products = Product.all
   end
@@ -16,8 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(user_id: session[:current_user_id])
-    @product.update(product_params)
+    @product = Product.create(product_params)
     redirect_to product_path(@product)
   end
 
@@ -38,7 +31,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name,:price,:description,:img_url)
+    params.require(:product).permit(:name,:description,:img_url)
   end
 
 end

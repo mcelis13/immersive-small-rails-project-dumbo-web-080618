@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 
   has_secure_password
-  has_many :products
+  has_many :user_products
+  has_many :products, through: :user_products
 
   validates :first_name, presence: true
   validates :first_name, length: {maximum: 10, message: "First name is too long."}
@@ -20,8 +21,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, length: {maximum: 50, message: "Email address is too long."}
 
-  validates :credit_card, presence: true
-  validates :credit_card, length: { minimum: 16, message: "Invalid credit card number"}
+  validates :bank_account, presence: true
 
   def full_name
     "#{self.first_name} #{self.last_name}"
