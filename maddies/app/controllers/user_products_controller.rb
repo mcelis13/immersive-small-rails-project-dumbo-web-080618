@@ -1,5 +1,6 @@
 class UserProductsController < ApplicationController
 
+  before_action :require_login
   def add_cart
     @user_product = UserProduct.find(params[:id])
     buyer_product = @user_product.dup

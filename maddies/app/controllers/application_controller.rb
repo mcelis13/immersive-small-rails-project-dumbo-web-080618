@@ -3,11 +3,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :current_cart
 
-  def welcome
-  end
 
-  def buy_or_sell
-  end
+
 
   def current_cart
     session[:cart] ||= []
@@ -23,5 +20,11 @@ class ApplicationController < ActionController::Base
 	def logged_in?
 		!!current_user
 	end
+
+  def require_login
+    if !current_user
+      redirect_to login_path
+    end
+  end
 
 end
