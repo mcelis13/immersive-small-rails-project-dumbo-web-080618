@@ -20,14 +20,18 @@ class ProductsController < ApplicationController
 
   def edit
     find_product
+  end
+
+  def update
+    find_product
     @product.update(product_params)
-    redirect_to product_path(@product)
+    render :show
   end
 
   private
 
   def find_product
-    @product = Product.find_by(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def product_params

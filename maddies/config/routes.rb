@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :create, :destroy]
 
   root 'application#welcome'
+  get 'application/buy_or_sell', to: 'application#buy_or_sell'
   # # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

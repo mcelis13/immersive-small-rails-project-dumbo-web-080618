@@ -2,12 +2,16 @@ class UserProductsController < ApplicationController
 
   def add_cart
     @user_product = UserProduct.find(params[:id])
-    @user_product.quantity = params[:quantity]
-    current_cart << @user_product
+    buyer_product = @user_product.dup
+    buyer_product.quantity = params[:quantity]
+    @user_product.quantity -= params[:quantity].to_i
+    @user_product.save
+    current_cart << buyer_product
     redirect_to user_path(session[:current_user_id])
   end
 
   def index
+    @user = current_user
     @user_products = UserProduct.all
   end
 
@@ -44,7 +48,7 @@ class UserProductsController < ApplicationController
   private
 
   def find_user_product
-    @user_product = UserProduct.find_by(params[:id])
+    @user_product = UserProduct.find(params[:id])
   end
 
   def user_product_params

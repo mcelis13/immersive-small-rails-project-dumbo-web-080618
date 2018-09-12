@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   def welcome
   end
 
+  def buy_or_sell
+  end
+
   def current_cart
     session[:cart] ||= []
   end
