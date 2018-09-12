@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'users/buy_or_sell', to: 'users#buy_or_sell'
   get "/signup", to: "users#new"
   get "/login", to: 'sessions#new'
   post "/login", to: "sessions#create"
+  post '/logout', to: 'session#destroy'
   delete "/logout", to: "sessions#destroy"
   resources :products
 
@@ -10,11 +12,13 @@ Rails.application.routes.draw do
   post 'user_products/:id/add_cart', to: "user_products#add_cart", as: "add"
   post '/users/cart', to: 'users#checkout'
   get '/users/confirmation', to: 'users#confirmation'
+  delete '/delete_product', to: 'users#delete_product'
 
   resources :user_products
 
   resources :users, only: [:show, :edit, :update, :create, :destroy]
 
-  root 'application#welcome'
+  root 'users#welcome'
+
   # # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

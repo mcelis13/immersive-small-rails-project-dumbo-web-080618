@@ -2,8 +2,8 @@
   <%= f.label "Name" %>
   <%= f.collection_select :product_id, Product.all, :id, :name %>
   <%= f.label :price %>
-  <%= f.number_field :price %>
+  <%= f.number_field :price, class: :text_field, step: :any, in: 1..10000 %>
   <%= f.label :quantity %>
-  <%= f.number_field :quantity %>
+  <%= f.number_field :quantity, in: 1..10 %>
   <%= f.submit %>
 <% end %>
