@@ -1,19 +1,39 @@
-<%= form_for @user do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-  <%= f.label :user_name %>
-  <%= f.text_field :user_name %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :bank_account %>
-  <%= f.number_field :bank_account %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit %>
-<% end %>
+<div class='row'>
+  <div class='col-sm-3'>
+    <%= form_for @user do |f| %>
+    <div class='form-group'>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, {:class => "form-control" }%>
+    </div>
+    <div class='form-group'>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, {:class => "form-control" }%>
+    </div>
+    <div class='form-group'>
+      <%= f.label :user_name %>
+      <%= f.text_field :user_name, {:class => "form-control" } %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :address %>
+      <%= f.text_field :address, {:class => "form-control" } %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :email %>
+      <%= f.text_field :email, {:class => "form-control" } %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :bank_account %>
+      <%= f.number_field :bank_account, {:class => "form-control" } %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :password %>
+      <%= f.password_field :password, {:class => "form-control" } %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, {:class => "form-control" } %>
+    </div>
+      <%= f.submit 'Submit', class:'btn btn-success'%>
+    <% end %>
+  </div>
+</div>
