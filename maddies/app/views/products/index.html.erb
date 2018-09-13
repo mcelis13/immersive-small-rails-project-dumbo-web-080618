@@ -1,5 +1,6 @@
 <ul>
   <% @products.each do |product| %>
+    <%= image_tag("#{product.img_url}", :height => "200") %>
     <li><%= link_to product.name, product_path(product) %></li>
   <% end %>
 </ul>

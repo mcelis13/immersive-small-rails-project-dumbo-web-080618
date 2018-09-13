@@ -53,7 +53,6 @@ skip_before_action :require_login, only: [:welcome, :buy_or_sell, :new, :create]
       seller_monies = seller.bank_account.to_i
       seller_monies += user_product_obj.price * cartObj["quantity"]
       seller.update(bank_account: seller_monies)
-      byebug
     end
 
     current_cart.clear
