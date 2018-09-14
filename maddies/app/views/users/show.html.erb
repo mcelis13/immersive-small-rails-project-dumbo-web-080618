@@ -3,9 +3,8 @@
 <p><%= @user.email %></p>
 
 <% @array_products.each do |cartItem| %>
-  <p><%= cartItem.product.name %><p>
+ <p><%= cartItem.product.name %><p>
 <% end %>
 
 <%= link_to "Delete Cart", users_delete_cart_path %>
 <%= link_to "Check Out", users_cart_path, method: :post %>
-<!-- Need to be able to see the cart for the user -->
