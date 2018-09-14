@@ -92,7 +92,6 @@ skip_before_action :require_login, only: [:welcome, :buy_or_sell, :new, :create]
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    byebug
     if @user.valid?
       redirect_to user_path
     else
