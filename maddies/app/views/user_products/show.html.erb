@@ -1,13 +1,14 @@
-<h1><%= @user_product.product.name %></h1>
+<div class='left_padding'>
+  <h1><%= @user_product.product.name %></h1>
+  <h2>Description: <%= @user_product.product.description %></h3>
+  <h3>Price: $ <%= @user_product.price %></h3>
+  <h4>Quantity Available: <%= @user_product.quantity %></h4><br><br>
 
-<h3>Description: <%= @user_product.product.description %></h3>
+  <%= image_tag("#{@user_product.product.img_url}", :width => "400") %>
 
-<h3>Price: $ <%= @user_product.price %></h3>
-
-<h4>Quantity Available: <%= @user_product.quantity %></h4><br><br>
-
-<%= form_tag add_path(@user_product.id), method: :post do %>
-  <label>Quantity to buy:</label><br>
-  <%= number_field_tag 'quantity', nil, in: 1..@user_product.quantity%><br><br>
-  <input type="submit" value="Add to cart">
-<% end %>
+  <%= form_tag add_path(@user_product.id), method: :post do %>
+    <label>Quantity to buy:</label><br>
+    <%= number_field_tag 'quantity', nil, in: 1..@user_product.quantity%><br><br>
+    <input type="submit" value="Add to cart">
+  <% end %>
+</div>

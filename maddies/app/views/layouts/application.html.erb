@@ -10,11 +10,38 @@
   </head>
 
   <body>
-    <div class='container'>
+
+  <!-- Navbar content -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <a class="navbar_brand" href="<%= root_path %>">Maddie's</a>
+
       <% if logged_in? %>
-        <%= button_to "Logout", '/logout', method: :delete %>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <%= link_to "Logout", '/logout', method: :delete, class: "btn btn-outline-primary" %>
+            </li>
+        </ul>
+      <% else  %>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <%= link_to "Login", '/login', class: "btn btn-outline-primary" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Signup", '/signup', class: "btn btn-outline-primary" %>
+            </li>
+        </ul>
       <% end %>
+
+
+
+        <!-- <div class="d-flex justify-content-end">
+          <div class="p-2 bd-highlight"><%= link_to "Logout", '/logout', method: :delete, class: "btn btn-outline-primary" %></div>
+        </div> -->
+        <!-- <%= link_to "Logout", '/logout', method: :delete, class: "btn btn-outline-primary" %> -->
+
+    </nav>
       <%= yield %>
-    </div>
+
+
   </body>
 </html>

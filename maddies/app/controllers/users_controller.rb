@@ -21,14 +21,18 @@ skip_before_action :require_login, only: [:welcome, :buy_or_sell, :new, :create]
     sum
   end
 
-  def delete_product
-    byebug
-    @cart = current_cart
-    product_id = params[:id]
-    @cart.delete_if do |productObj|
-      productObj.id == product_id
-    end
-    render :show
+  # def delete_product
+  #   byebug
+  #   @cart = current_cart
+  #   product_id = params[:id]
+  #   @cart.delete_if do |productObj|
+  #     productObj.id == product_id
+  #   end
+  #   render :show
+  # end
+  def delete_cart
+    current_cart.clear
+    redirect_to users_buy_or_sell_path
   end
 
   def show
