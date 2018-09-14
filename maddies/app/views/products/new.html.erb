@@ -1,6 +1,12 @@
+<% if @product.errors.any? %>
+ <% @product.errors.full_messages.each do |error| %>
+   <p> <%= error %> </p>
+ <%end %>
+<% end %>
+
+<%= form_for @product do |f| %>
 <div class='form-group'>
   <div class='form-column'>
-    <%= form_for @product do |f| %>
     <div class='col-md-5 center'>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
@@ -21,7 +27,7 @@
   <div class='form-column'>
     <div class='col-md-5 center'>
       <%= f.submit "Submit", class:'btn btn-light'%>
-    <% end %>
     </div>
   </div>
 </div>
+<% end %>

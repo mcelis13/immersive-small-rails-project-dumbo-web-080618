@@ -22,6 +22,12 @@ skip_before_action :require_login, only: [:welcome, :buy_or_sell, :new, :create]
   end
 
   def delete_cart
+    current_cart.each do |cartItem|
+      found_user_product = UserProduct.find_by(product_id: cartItem['product_id'], user_id: cartItem['user_id'])
+      seller_quantity = found_user_product.quantity
+      new_quantity = found_user_product.quantity + cartItem['quantity']
+      found_user_product.update(quantity: new_quantity)
+    end
    current_cart.clear
    redirect_to root_path
   end
@@ -34,26 +40,33 @@ skip_before_action :require_login, only: [:welcome, :buy_or_sell, :new, :create]
       product = UserProduct.find_by(product_id: cartItem['product_id'])
       @array_products << product
     end
+    @cart_total = add_cart
   end
 
   def checkout
-    monies = current_user.bank_account.to_i
-    monies -= add_cart
-    current_user.update(bank_account: monies)
+   balance = current_user.bank_account.to_i
+     if balance >= add_cart
+       monies = current_user.bank_account.to_i
+       monies -= add_cart
+       current_user.update(bank_account: monies)
 
-    current_cart.each do |cartObj|
-      product_id = cartObj["product_id"]
-      user_product_obj = UserProduct.find_by(product_id: product_id)
-      seller = User.find(user_product_obj["user_id"])
-      seller_monies = seller.bank_account.to_i
-      seller_monies += user_product_obj.price * cartObj["quantity"]
-      seller.update(bank_account: seller_monies)
-      byebug
-    end
+       current_cart.each do |cartObj|
+         product_id = cartObj["product_id"]
+         user_product_obj = UserProduct.find_by(product_id: product_id)
+         seller = User.find(user_product_obj["user_id"])
+         seller_monies = seller.bank_account.to_i
+         seller_monies += user_product_obj.price * cartObj["quantity"]
+         seller.update(bank_account: seller_monies)
+       end
 
-    current_cart.clear
-    redirect_to users_confirmation_path
-  end
+       current_cart.clear
+       flash[:notice] = "Your purchase has been successfully completed. Thank you for shopping at Maddie's!"
+       redirect_to root_path
+     else
+       flash[:notice] = "You don't have enough money in your bank account."
+       redirect_to user_path(current_user)
+     end
+ end
 
   def confirmation
     render :confirmation
@@ -79,6 +92,7 @@ skip_before_action :require_login, only: [:welcome, :buy_or_sell, :new, :create]
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    byebug
     if @user.valid?
       redirect_to user_path
     else
