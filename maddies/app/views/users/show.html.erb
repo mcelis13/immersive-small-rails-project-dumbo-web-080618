@@ -12,6 +12,6 @@
       <li><img src="<%="#{cartItem.product.img_url}"%>" style='width: 100px; padding:10px;'/><%= cartItem.product.name %>- $<%= cartItem.price %></li>
     <% end %>
   </ol>
-<p>Your cart total is $<%= @cart_total %></p>
+<p>Your cart total is $ <%= @cart_total %></p>
 <%= link_to "Delete Cart", users_delete_cart_path, class:'btn btn-light' %>
 <%= link_to "Check Out", users_cart_path, method: :post, class: 'btn btn-light'%>
