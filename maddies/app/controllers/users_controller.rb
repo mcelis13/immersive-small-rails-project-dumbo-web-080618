@@ -21,18 +21,9 @@ skip_before_action :require_login, only: [:welcome, :buy_or_sell, :new, :create]
     sum
   end
 
-  # def delete_product
-  #   byebug
-  #   @cart = current_cart
-  #   product_id = params[:id]
-  #   @cart.delete_if do |productObj|
-  #     productObj.id == product_id
-  #   end
-  #   render :show
-  # end
   def delete_cart
-    current_cart.clear
-    redirect_to users_buy_or_sell_path
+   current_cart.clear
+   redirect_to root_path
   end
 
   def show
@@ -57,6 +48,7 @@ skip_before_action :require_login, only: [:welcome, :buy_or_sell, :new, :create]
       seller_monies = seller.bank_account.to_i
       seller_monies += user_product_obj.price * cartObj["quantity"]
       seller.update(bank_account: seller_monies)
+      byebug
     end
 
     current_cart.clear
