@@ -1,7 +1,14 @@
+<html>
+<% if @user.errors.any? %>
+ <% @user.errors.full_messages.each do |error| %>
+   <p> <%= error %> </p>
+ <%end %>
+<% end %>
 
-  <div class='form-group'>
+<body background='assets/signup_final.jpg'>
+  <%= form_for @user do |f| %>
+  <div class='form-group' >
     <div class='form-row'>
-        <%= form_for @user do |f| %>
         <div class='col-md-4'>
           <%= f.label :first_name %>
           <%= f.text_field :first_name, {:class => "form-control", placeholder: 'Vadim'}%>
@@ -42,7 +49,6 @@
           <%= f.label :email %>
           <%= f.text_field :email, {:class => "form-control", placeholder: 'maddie@gmail.com'} %>
         </div>
-        <br>
         <div class='col-md-6'>
           <%= f.label 'Store Credit' %>
           <%= f.number_field :bank_account, {:class => "form-control", placeholder: '100' } %>
@@ -51,9 +57,9 @@
   </div>
   <div class='form-group'>
     <div class='form-row'>
-      <div class='col-md-4'>
-          <%= f.submit 'Submit', class:'btn btn-light col-md-6 center'%>
-        <% end %>
-      </div>
+          <%= f.submit 'Submit', class:'btn btn-light col-md-3 center'%>
     </div>
   </div>
+  <% end %>
+</body>
+</html>

@@ -24,9 +24,14 @@
      <% if logged_in? %>
        <ul class="navbar-nav ml-auto">
            <li class="nav-item">
+             <%=link_to  "Edit profile", edit_user_path(current_user), class:'btn btn-light' %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "My cart",user_path(current_user), class: "btn btn-light" %>
+          </li>
+           <li class="nav-item">
                <%= link_to "Logout", '/logout', method: :delete, class: "btn btn-light" %>
            </li>
-
        </ul>
      <% else  %>
        <ul class="navbar-nav ml-auto">

@@ -1,4 +1,11 @@
+<html>
+<% if @user.errors.any? %>
+ <% @user.errors.full_messages.each do |error| %>
+   <p> <%= error %> </p>
+ <%end %>
+<% end %>
 
+<body background='assets/signup_final.jpg'>
   <%= form_for @user do |f| %>
   <div class='form-group' >
     <div class='form-row'>
@@ -54,3 +61,5 @@
     </div>
   </div>
   <% end %>
+</body>
+</html>
