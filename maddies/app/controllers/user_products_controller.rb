@@ -21,9 +21,15 @@ class UserProductsController < ApplicationController
   end
 
   def create
-    @user_product = UserProduct.create(user_id: session[:current_user_id])
+    @user_product = UserProduct.new(user_id: session[:current_user_id])
     @user_product.update(user_product_params)
-    redirect_to root_path
+    @user_product.save
+    if @user_product.valid?
+      flash[:notice] = "Your product has been successfully listed."
+      redirect_to new_user_product_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -36,8 +42,11 @@ class UserProductsController < ApplicationController
 
   def update
     find_user_product
-    @user_product.update(user_product_params)
-    redirect_to user_product_path(@user_product)
+    if @user_product.update(user_product_params).valid?
+      redirect_to user_product_path(@user_product)
+    else
+      render :edit
+    end
   end
 
   def destroy
