@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   post 'user_products/:id/add_cart', to: "user_products#add_cart", as: "add"
   post '/users/cart', to: 'users#checkout'
   get '/users/confirmation', to: 'users#confirmation'
-  delete '/delete_product', to: 'users#delete_product'
-
+  get 'users/delete_cart', to: 'users#delete_cart'
   resources :user_products
 
   resources :users, only: [:show, :edit, :update, :create, :destroy]

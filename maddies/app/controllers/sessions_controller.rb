@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params['password'])
       session[:current_user_id] = @user.id
       cookies.signed[:user_id] = @user.id
-      redirect_to '/users/buy_or_sell'
+      redirect_to user_products_path
     else
       redirect_to '/login'
     end
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :current_user_id
-    redirect_to '/login'
+    redirect_to root_path
   end
 
 end
