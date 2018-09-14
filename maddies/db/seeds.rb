@@ -23,8 +23,6 @@ Product.create(name:"Razor Blade", description: "Closest shave you will ever get
 Product.create(name:"Dragon", description: "You can't be the mother of dragons without your own personal dragon.", img_url: "http://pngimg.com/uploads/dragon/dragon_PNG1613.png")
 
 
-
-
 UserProduct.create(user_id:1, product_id:1, price:500, quantity:12)
 UserProduct.create(user_id:1, product_id:2, price:150, quantity:18)
 UserProduct.create(user_id:1, product_id:3, price:100, quantity:40)
