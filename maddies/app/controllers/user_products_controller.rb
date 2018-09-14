@@ -23,7 +23,7 @@ class UserProductsController < ApplicationController
   def create
     @user_product = UserProduct.create(user_id: session[:current_user_id])
     @user_product.update(user_product_params)
-    redirect_to user_product_path(@user_product)
+    redirect_to root_path
   end
 
   def show

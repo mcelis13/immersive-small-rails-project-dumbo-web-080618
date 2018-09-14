@@ -1,39 +1,59 @@
-<div class='row'>
-  <div class='col-sm-3'>
-    <%= form_for @user do |f| %>
-    <div class='form-group'>
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, {:class => "form-control" }%>
+
+  <div class='form-group'>
+    <div class='form-row'>
+        <%= form_for @user do |f| %>
+        <div class='col-md-4'>
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, {:class => "form-control", placeholder: 'Vadim'}%>
+        </div>
+        <div class='col-md-4'>
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, {:class => "form-control", placeholder: 'Avnilov'}%>
+        </div>
+        <div class='col-md-4'>
+          <%= f.label :user_name %>
+          <%= f.text_field :user_name, {:class => "form-control", placeholder: 'vadim' } %>
+        </div>
     </div>
-    <div class='form-group'>
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, {:class => "form-control" }%>
-    </div>
-    <div class='form-group'>
-      <%= f.label :user_name %>
-      <%= f.text_field :user_name, {:class => "form-control" } %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :address %>
-      <%= f.text_field :address, {:class => "form-control" } %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :email %>
-      <%= f.text_field :email, {:class => "form-control" } %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :bank_account %>
-      <%= f.number_field :bank_account, {:class => "form-control" } %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :password %>
-      <%= f.password_field :password, {:class => "form-control" } %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, {:class => "form-control" } %>
-    </div>
-      <%= f.submit 'Submit', class:'btn btn-success'%>
-    <% end %>
   </div>
-</div>
+  <div class='form-group'>
+    <div class='form-row'>
+        <div class='col-md-6'>
+          <%= f.label :password %>
+          <%= f.password_field :password, {:class => "form-control", placeholder: 'password' } %>
+        </div>
+        <div class='col-md-6'>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, {:class => "form-control", placeholder: 're-enter password' } %>
+        </div>
+    </div>
+  </div>
+  <div class='form-group'>
+    <div class='form-row'>
+        <div class='col-md-12'>
+          <%= f.label :address %>
+          <%= f.text_field :address, {:class => "form-control", placeholder: '1425 MacDonough St Brooklyn, NY, 21133' } %>
+        </div>
+    </div>
+  </div>
+  <div class='form-group'>
+    <div class='form-row'>
+        <div class='col-md-6'>
+          <%= f.label :email %>
+          <%= f.text_field :email, {:class => "form-control", placeholder: 'maddie@gmail.com'} %>
+        </div>
+        <br>
+        <div class='col-md-6'>
+          <%= f.label 'Store Credit' %>
+          <%= f.number_field :bank_account, {:class => "form-control", placeholder: '100' } %>
+        </div>
+    </div>
+  </div>
+  <div class='form-group'>
+    <div class='form-row'>
+      <div class='col-md-4'>
+          <%= f.submit 'Submit', class:'btn btn-light col-md-6 center'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
