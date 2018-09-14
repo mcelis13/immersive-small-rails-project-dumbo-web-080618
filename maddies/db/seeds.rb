@@ -18,11 +18,17 @@ Product.create(name:"Half Life Game", description: "Half Life 3 coming soon!", i
 Product.create(name:"Bullet Necklace", description: "You need that street cred. Get this now!", img_url: "http://pngimg.com/uploads/necklace/necklace_PNG128.png")
 Product.create(name:"Clarinet", description: "Voted #1 instrument for anybody starting a band!", img_url: "http://pngimg.com/uploads/flute/flute_PNG58.png")
 Product.create(name:"Grill", description: "Heat this sucker up and watch the game with your buds.", img_url: "http://pngimg.com/uploads/grill/grill_PNG13954.png")
+Product.create(name:"Dutch Oven", description: "Really cooks your stuff better than the other guys.", img_url: "http://pngimg.com/uploads/cooking_pot/cooking_pot_PNG14069.png")
+Product.create(name:"Razor Blade", description: "Closest shave you will ever get in your life.Pack of 12 blades.", img_url: "http://pngimg.com/uploads/razor_blade/razor_blade_PNG17834.png")
+Product.create(name:"Dragon", description: "You can't be the mother of dragons without your own personal dragon.", img_url: "http://pngimg.com/uploads/dragon/dragon_PNG1613.png")
 
 
 
-
-UserProduct.create(user_id:1, product_id:3, price:5, quantity:10)
-UserProduct.create(user_id:2, product_id:3, price:4, quantity:8)
-UserProduct.create(user_id:3, product_id:1, price:250, quantity:4)
-UserProduct.create(user_id:5, product_id:2, price:28, quantity:7)
+UserProduct.create(user_id:1, product_id:1, price:500, quantity:12)
+UserProduct.create(user_id:1, product_id:2, price:150, quantity:18)
+UserProduct.create(user_id:1, product_id:3, price:100, quantity:40)
+UserProduct.create(user_id:1, product_id:4, price:400, quantity:15)
+UserProduct.create(user_id:2, product_id:16, price:9999, quantity:3)
+UserProduct.create(user_id:2, product_id:15, price:5, quantity:100)
+UserProduct.create(user_id:2, product_id:14, price:49, quantity:50)
+UserProduct.create(user_id:2, product_id:13, price:200, quantity:30)

@@ -22,6 +22,12 @@ skip_before_action :require_login, only: [:welcome, :buy_or_sell, :new, :create]
   end
 
   def delete_cart
+    current_cart.each do |cartItem|
+      found_user_product = UserProduct.find_by(product_id: cartItem['product_id'], user_id: cartItem['user_id'])
+      seller_quantity = found_user_product.quantity
+      new_quantity = found_user_product.quantity + cartItem['quantity']
+      found_user_product.update(quantity: new_quantity)
+    end
    current_cart.clear
    redirect_to root_path
   end
